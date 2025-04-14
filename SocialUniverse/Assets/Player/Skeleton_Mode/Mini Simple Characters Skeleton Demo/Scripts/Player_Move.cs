@@ -10,14 +10,11 @@ public class Player_Move : MonoBehaviour
     public float RotSpeed;
     private float Rotation;
     public float Gravity;
-    //Spawn Variables
-    public float playerSetX;
-    public float playerSetY;
-    public float playerSetZ;
+    public bool isGrounded;
+    Rigidbody rb;
 
-
-    //Movement Variables
-    public float playerJumpHeight = 2;
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
 
     Vector3 MoveDirection;
     CharacterController controller;
@@ -27,8 +24,19 @@ public class Player_Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        isGrounded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
     }
 
     // Update is called once per frame
@@ -41,6 +49,7 @@ public class Player_Move : MonoBehaviour
     {
         if (controller.isGrounded)
         {
+            
 
             if (Input.GetKey(KeyCode.W))
             {
@@ -67,9 +76,10 @@ public class Player_Move : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
-                transform.position += new Vector3(playerSetX, playerJumpHeight, playerSetZ);
+                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+                isGrounded = false;
             }
 
         }
