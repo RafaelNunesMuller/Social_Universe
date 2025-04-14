@@ -10,6 +10,14 @@ public class Player_Move : MonoBehaviour
     public float RotSpeed;
     private float Rotation;
     public float Gravity;
+    //Spawn Variables
+    public float playerSetX;
+    public float playerSetY;
+    public float playerSetZ;
+
+
+    //Movement Variables
+    public float playerJumpHeight = 2;
 
     Vector3 MoveDirection;
     CharacterController controller;
@@ -59,9 +67,9 @@ public class Player_Move : MonoBehaviour
             }
 
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-
+                transform.position += new Vector3(playerSetX, playerJumpHeight, playerSetZ);
             }
 
         }
