@@ -1,42 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class Player_Move : MonoBehaviour
 {
     public float Speed;
     public float RotSpeed;
     private float Rotation;
-    public float Gravity;
-    public bool isGrounded;
-    Rigidbody rb;
+    public float Gravity = 9.81f;
+    public float jumpForce = 10.0f;
 
-    public Vector3 jump;
-    public float jumpForce = 2.0f;
-
-    Vector3 MoveDirection;
-    CharacterController controller;
-    Animator anim;
-
+    private Vector3 MoveDirection;
+    private CharacterController controller;
+    private Animator anim;
+    private float verticalVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        isGrounded = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        isGrounded = false;
     }
 
     // Update is called once per frame
@@ -49,45 +30,45 @@ public class Player_Move : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            
+            verticalVelocity = -Gravity * Time.deltaTime; // Garante que o personagem fique no chão
 
+            // Movimento para frente e trás
             if (Input.GetKey(KeyCode.W))
             {
                 MoveDirection = Vector3.forward * Speed;
-                MoveDirection = transform.TransformDirection(MoveDirection);
                 anim.SetInteger("transition", 1);
             }
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                MoveDirection = Vector3.zero;
-                anim.SetInteger("transition", 0);
-            }
-
-            if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S))
             {
                 MoveDirection = Vector3.back * Speed;
-                MoveDirection = transform.TransformDirection(MoveDirection);
                 anim.SetInteger("transition", 1);
             }
-            if (Input.GetKeyUp(KeyCode.S))
+            else
             {
                 MoveDirection = Vector3.zero;
                 anim.SetInteger("transition", 0);
             }
 
-
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            // Pulo
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-                isGrounded = false;
+                verticalVelocity = jumpForce;
+                anim.SetInteger("transition", 2);
             }
-
         }
+        else
+        {
+            verticalVelocity -= Gravity * Time.deltaTime; // Aplica gravidade quando está no ar
+        }
+
+        // Rotação
         Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
         transform.eulerAngles = new Vector3(0, Rotation, 0);
 
-        MoveDirection.y -= Gravity * Time.deltaTime;
-        controller.Move(MoveDirection * Time.deltaTime);
-    }
+        // Aplica direção do movimento e pulo
+        Vector3 move = transform.TransformDirection(MoveDirection);
+        move.y = verticalVelocity;
 
+        controller.Move(move * Time.deltaTime);
+    }
 }
