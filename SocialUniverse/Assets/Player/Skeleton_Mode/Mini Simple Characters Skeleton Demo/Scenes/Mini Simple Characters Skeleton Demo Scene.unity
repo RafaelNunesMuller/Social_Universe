@@ -397,8 +397,6 @@ MonoBehaviour:
   Speed: 10
   RotSpeed: 180
   Gravity: 10
-  isGrounded: 0
-  jump: {x: 0, y: 0, z: 0}
   jumpForce: 2
 --- !u!143 &1350935653
 CharacterController:
@@ -628,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
       propertyPath: m_Name
-      value: mini simple skeleton demo
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
       propertyPath: m_IsActive
