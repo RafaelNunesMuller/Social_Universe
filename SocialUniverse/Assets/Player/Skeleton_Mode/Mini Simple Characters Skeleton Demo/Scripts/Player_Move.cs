@@ -50,7 +50,7 @@ public class Player_Move : MonoBehaviour
             }
 
             // Pulo
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 verticalVelocity = jumpForce;
                 anim.SetInteger("transition", 2);
