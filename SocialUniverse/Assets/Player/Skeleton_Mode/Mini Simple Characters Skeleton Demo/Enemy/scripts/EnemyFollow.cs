@@ -14,27 +14,26 @@ public class EnemyFollow : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        // Acha o player pela tag
         if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     void Update()
     {
+        if (player == null) return;
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance <= detectionRange)
         {
             agent.SetDestination(player.position);
 
-            if (agent.velocity.magnitude > 0.1f)
-            {
-                animator.SetBool("isWalking", true);
-            }
+            // Atualiza o parâmetro do Animator (ajuste conforme o Animator do asset)
+            animator.SetFloat("Speed", agent.velocity.magnitude);
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            animator.SetFloat("Speed", 0f);
         }
     }
 }
