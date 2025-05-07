@@ -1,56 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
 
 public class PlayerMove : MonoBehaviour
 {
     public float Speed;
-    public float RotSpeed;
-    private float Rotation;
     public float Gravity;
 
-    Vector3 MoveDirection;
-    CharacterController controller;
-    //Animator anim;
+    private Vector3 _moveDirection;
+    private CharacterController _controller;
 
+    [Tooltip("A Cinemachine FreeLook Camera")]
+    public CinemachineCamera cinemachineCamera;
 
-    // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        //anim = GetComponent<Animator>();
+        _controller = GetComponent<CharacterController>();
+        if (cinemachineCamera == null)
+        {
+            Debug.LogError("Cinemachine FreeLook Camera não foi atribuída ao script PlayerMove no objeto: " + gameObject.name);
+        }
+
+        // Oculta e prende o cursor do mouse no início do jogo
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
+
+        // Opcional: Permite liberar o cursor com a tecla Esc (útil para debugging)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     void Move()
     {
-        if (controller.isGrounded) { 
-        
-            if(Input.GetKey(KeyCode.W)) 
-            { 
-                MoveDirection = Vector3.forward * Speed;
-                MoveDirection = transform.TransformDirection(MoveDirection);
-                //anim.SetInteger("Transitions", 1);
-            }
-            if (Input.GetKeyUp(KeyCode.W))
+        if (_controller.isGrounded)
+        {
+            _moveDirection = Vector3.zero;
+
+            if (Input.GetKey(KeyCode.W))
             {
-                MoveDirection = Vector3.zero;
-                //transform.Translate(Vector3.back * Velocity * Time.deltaTime);
-                //anim.SetInteger("Transitions", 0);
+                if (cinemachineCamera != null)
+                {
+                    // Obtém a rotação Y da câmera Cinemachine
+                    float cameraYaw = cinemachineCamera.transform.eulerAngles.y;
+                    Quaternion targetRotation = Quaternion.Euler(0f, cameraYaw, 0f);
+
+                    // Aplica a rotação da câmera ao player
+                    transform.rotation = targetRotation;
+
+                    // Define a direção para frente baseada NA ROTAÇÃO DO PLAYER (agora alinhada com a câmera)
+                    _moveDirection = transform.forward * Speed;
+                }
+                else
+                {
+                    Debug.LogWarning("Cinemachine Camera não está atribuída, usando direção para frente local.");
+                    _moveDirection = transform.forward * Speed;
+                }
             }
         }
-        Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, Rotation, 0);
 
-        MoveDirection.y -= Gravity * Time.deltaTime;
-        controller.Move(MoveDirection * Time.deltaTime);
+        _moveDirection.y -= Gravity * Time.deltaTime;
+        _controller.Move(_moveDirection * Time.deltaTime);
     }
-    
 }

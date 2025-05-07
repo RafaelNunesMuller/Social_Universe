@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.Cinemachine; // Importe o namespace Cinemachine
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class DialogueManager : MonoBehaviour
     public float cameraZoomDistance = 2f;
     public float cameraZoomSpeed = 5f;
     public float typingSpeed = 0.05f; // Tempo entre a aparição de cada caractere
+
+    public CinemachineCamera cinemachineCamera; // Referência à sua câmera FreeLook
+    private Transform originalLookAtTarget;
+    private Transform originalFollowTarget;
+    public float cameraTransitionTime = 1f; // Tempo para a transição da câmera
+
+    private PlayerMove playerMoveScript; // Referência ao script de movimento do player
+    private float originalPlayerSpeed; // Variável para armazenar a velocidade original do player
 
     private Transform mainCameraTransform;
     private Transform targetTransform;
@@ -36,6 +45,19 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogError("Dialogue Canvas não atribuído ao DialogueManager em " + gameObject.name);
             enabled = false;
+        }
+
+        if (cinemachineCamera == null)
+        {
+            Debug.LogError("Cinemachine FreeLook Camera não foi atribuída ao DialogueManager em " + gameObject.name);
+            enabled = false;
+        }
+
+        // Encontra o script PlayerMove no Start
+        playerMoveScript = Object.FindFirstObjectByType<PlayerMove>();
+        if (playerMoveScript == null)
+        {
+            Debug.LogError("Não foi encontrado um script PlayerMove na cena. Certifique-se de que o Player possui esse script.");
         }
     }
 
@@ -87,6 +109,23 @@ public class DialogueManager : MonoBehaviour
 
         originalCameraPosition = mainCameraTransform.position;
         originalCameraRotation = mainCameraTransform.rotation;
+
+        // Salva os alvos originais da câmera FreeLook
+        originalLookAtTarget = cinemachineCamera.LookAt;
+        originalFollowTarget = cinemachineCamera.Follow;
+
+        // Define o NPC como o novo alvo da câmera FreeLook
+        cinemachineCamera.LookAt = targetPosition;
+        // Opcional: Se quiser mudar o "follow" também, descomente a linha abaixo
+        // cinemachineCamera.Follow = targetPosition;
+
+        // Bloqueia o movimento do jogador salvando a velocidade e definindo para zero
+        if (playerMoveScript != null)
+        {
+            originalPlayerSpeed = playerMoveScript.Speed;
+            playerMoveScript.Speed = 0f;
+        }
+
         isDialogueActive = true;
         if (dialogueCanvas != null)
         {
@@ -150,6 +189,17 @@ public class DialogueManager : MonoBehaviour
             mainCameraTransform.position = originalCameraPosition;
             mainCameraTransform.rotation = originalCameraRotation;
         }
+
+        // Restaura os alvos originais da câmera FreeLook
+        cinemachineCamera.LookAt = originalLookAtTarget;
+        cinemachineCamera.Follow = originalFollowTarget;
+
+        // Restaura a velocidade original do jogador ao finalizar o diálogo
+        if (playerMoveScript != null)
+        {
+            playerMoveScript.Speed = originalPlayerSpeed;
+        }
+
         targetTransform = null;
         targetLookAt = null;
     }
