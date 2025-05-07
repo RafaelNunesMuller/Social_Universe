@@ -1,118 +1,74 @@
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyFollow : MonoBehaviour
 {
-    public Transform player;
-    public Transform[] patrolPoints;
-    private int currentPatrolIndex;
+    public float Speed;
+    public float RotSpeed;
+    private float Rotation;
+    public float Gravity = 9.81f;
+    public float jumpForce = 10.0f;
 
-    private NavMeshAgent agent;
-    private Animator animator;
+    private Vector3 MoveDirection;
+    private CharacterController controller;
+    private Animator anim;
+    private float verticalVelocity;
 
-    public float detectionRange = 10f;
-    public float attackRange = 1.5f;
-    public float visionAngle = 60f;
-    public float lostTargetDelay = 3f;
-
-    private float lostTimer = 0f;
-    private bool playerInSight = false;
-
-    private EnemyState currentState = EnemyState.Patrol;
-
+    // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        GoToNextPatrolPoint();
+        controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (player == null) return;
+        Move();
+    }
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        playerInSight = IsPlayerVisible();
-
-        if (playerInSight && distanceToPlayer <= detectionRange)
+    void Move()
+    {
+        if (controller.isGrounded)
         {
-            lostTimer = 0f; // Resetar contador de perda
-            if (distanceToPlayer <= attackRange)
+            verticalVelocity = -Gravity * Time.deltaTime; // Garante que o personagem fique no chão
+
+            // Movimento para frente e trás
+            if (Input.GetKey(KeyCode.W))
             {
-                agent.ResetPath();
-                SetState(EnemyState.Attack);
+                MoveDirection = Vector3.forward * Speed;
+                anim.SetInteger("transition", 1);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                MoveDirection = Vector3.back * Speed;
+                anim.SetInteger("transition", 1);
             }
             else
             {
-                agent.SetDestination(player.position);
-                SetState(EnemyState.Chase);
+                MoveDirection = Vector3.zero;
+                anim.SetInteger("transition", 0);
             }
-        }
-        else if (currentState == EnemyState.Chase || currentState == EnemyState.Attack)
-        {
-            lostTimer += Time.deltaTime;
-            if (lostTimer >= lostTargetDelay)
+
+            // Pulo
+            if (Input.GetKey(KeyCode.Space))
             {
-                GoToNextPatrolPoint();
-                SetState(EnemyState.Patrol);
+                verticalVelocity = jumpForce;
+                anim.SetInteger("transition", 2);
             }
         }
         else
         {
-            // Patrulhar
-            if (!agent.pathPending && agent.remainingDistance < 0.3f)
-            {
-                GoToNextPatrolPoint();
-            }
-            SetState(EnemyState.Patrol);
+            verticalVelocity -= Gravity * Time.deltaTime; // Aplica gravidade quando está no ar
         }
+
+        // Rotação
+        Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
+        transform.eulerAngles = new Vector3(0, Rotation, 0);
+
+        // Aplica direção do movimento e pulo
+        Vector3 move = transform.TransformDirection(MoveDirection);
+        move.y = verticalVelocity;
+
+        controller.Move(move * Time.deltaTime);
     }
-
-    bool IsPlayerVisible()
-    {
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        float angle = Vector3.Angle(transform.forward, directionToPlayer);
-
-        if (angle < visionAngle / 2f)
-        {
-            Ray ray = new Ray(transform.position + Vector3.up * 1.2f, directionToPlayer);
-            if (Physics.Raycast(ray, out RaycastHit hit, detectionRange))
-            {
-                if (hit.transform.CompareTag("Player"))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    void GoToNextPatrolPoint()
-    {
-        if (patrolPoints.Length == 0) return;
-
-        agent.SetDestination(patrolPoints[currentPatrolIndex].position);
-        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-    }
-
-    void SetState(EnemyState state)
-    {
-        if (currentState != state)
-        {
-            currentState = state;
-            animator.SetInteger("speed", (int)state);
-        }
-    }
-}
-
-public enum EnemyState
-{
-    Idle = 0,
-    Patrol = 1,
-    Chase = 2,
-    Attack = 3
 }
