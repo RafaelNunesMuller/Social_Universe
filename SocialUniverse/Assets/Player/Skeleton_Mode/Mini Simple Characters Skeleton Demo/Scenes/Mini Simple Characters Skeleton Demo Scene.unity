@@ -306,14 +306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84f44f2786d88d418106efe66857515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  detectionRange: 10
-  attackRange: 1.5
-  visionAngle: 60
-  lostTargetDelay: 3
+  Speed: 0
+  RotSpeed: 0
+  Gravity: 9.81
+  jumpForce: 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
