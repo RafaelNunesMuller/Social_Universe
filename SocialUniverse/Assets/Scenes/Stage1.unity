@@ -2797,9 +2797,12 @@ Transform:
   m_PrefabInstance: {fileID: 979334274}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &985792856
 GameObject:
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1022138370
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,4 +6181,7 @@ SceneRoots:
 =======
   - {fileID: 1044140335}
   - {fileID: 1022138374}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
