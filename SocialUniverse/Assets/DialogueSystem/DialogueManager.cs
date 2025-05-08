@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     private Transform originalLookAtTarget;
     private Transform originalFollowTarget;
     public float cameraTransitionTime = 1f; // Tempo para a transição da câmera
+    public float jumpReactivationDelay = 0.2f; // Ajuste este valor conforme necessário
 
     private PlayerMove playerMoveScript; // Referência ao script de movimento do player
     private float originalPlayerSpeed; // Variável para armazenar a velocidade original do player
@@ -119,11 +120,13 @@ public class DialogueManager : MonoBehaviour
         // Opcional: Se quiser mudar o "follow" também, descomente a linha abaixo
         // cinemachineCamera.Follow = targetPosition;
 
-        // Bloqueia o movimento do jogador salvando a velocidade e definindo para zero
+        // Bloqueia o movimento, a rotação e o pulo do jogador
         if (playerMoveScript != null)
         {
             originalPlayerSpeed = playerMoveScript.Speed;
             playerMoveScript.Speed = 0f;
+            playerMoveScript.canRotate = false;
+            playerMoveScript.canJump = false; // Desabilita o pulo
         }
 
         isDialogueActive = true;
@@ -194,14 +197,26 @@ public class DialogueManager : MonoBehaviour
         cinemachineCamera.LookAt = originalLookAtTarget;
         cinemachineCamera.Follow = originalFollowTarget;
 
-        // Restaura a velocidade original do jogador ao finalizar o diálogo
+        // Restaura o movimento, a rotação e desativa o pulo temporariamente
         if (playerMoveScript != null)
         {
             playerMoveScript.Speed = originalPlayerSpeed;
+            playerMoveScript.canRotate = true;
+            playerMoveScript.canJump = false;
+            StartCoroutine(ReactivateJump());
         }
 
         targetTransform = null;
         targetLookAt = null;
+    }
+
+    IEnumerator ReactivateJump()
+    {
+        yield return new WaitForSeconds(jumpReactivationDelay);
+        if (playerMoveScript != null)
+        {
+            playerMoveScript.canJump = true;
+        }
     }
 
     void OnDisable()
