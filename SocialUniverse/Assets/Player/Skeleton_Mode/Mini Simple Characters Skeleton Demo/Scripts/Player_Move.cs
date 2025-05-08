@@ -33,7 +33,12 @@ public class Player_Move : MonoBehaviour
             verticalVelocity = -Gravity * Time.deltaTime; // Garante que o personagem fique no chão
 
             // Movimento para frente e trás
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.Space))
+            {
+                verticalVelocity = jumpForce;
+                anim.SetInteger("transition", 2);
+            }
+            else if (Input.GetKey(KeyCode.W))
             {
                 MoveDirection = Vector3.forward * Speed;
                 anim.SetInteger("transition", 1);
@@ -49,12 +54,6 @@ public class Player_Move : MonoBehaviour
                 anim.SetInteger("transition", 0);
             }
 
-            // Pulo
-            if (Input.GetKey(KeyCode.Space))
-            {
-                verticalVelocity = jumpForce;
-                anim.SetInteger("transition", 2);
-            }
         }
         else
         {
