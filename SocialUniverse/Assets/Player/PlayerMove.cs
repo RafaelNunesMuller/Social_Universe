@@ -6,14 +6,13 @@ public class PlayerMove : MonoBehaviour
 {
     public float Speed;
     public float Gravity;
-<<<<<<< Updated upstream
-=======
+
     public float JumpForce = 5f; // Adicionamos a força do pulo
     public bool canRotate = true;
     public bool canJump = true; // Adicionamos esta variável para controlar o pulo
     private Animator anim;
     private Vector3 MoveDirection;
->>>>>>> Stashed changes
+
 
     private Vector3 _moveDirection;
     private CharacterController _controller;
@@ -54,7 +53,7 @@ public class PlayerMove : MonoBehaviour
 
             if (Input.GetKey(KeyCode.W))
             {
-<<<<<<< Updated upstream
+
                 if (cinemachineCamera != null)
                 {
                     // Obtém a rotação Y da câmera Cinemachine
@@ -72,10 +71,10 @@ public class PlayerMove : MonoBehaviour
                     Debug.LogWarning("Cinemachine Camera não está atribuída, usando direção para frente local.");
                     _moveDirection = transform.forward * Speed;
                 }
-=======
-                float cameraYaw = cinemachineCamera.transform.eulerAngles.y;
-                Quaternion targetRotation = Quaternion.Euler(0f, cameraYaw, 0f);
-                transform.rotation = targetRotation;
+
+                
+                
+                
                 _moveDirection.x = transform.forward.x * Speed; // Move na direção horizontal
                 _moveDirection.z = transform.forward.z * Speed; // Move na direção vertical (no plano horizontal)
                 anim.SetInteger("transition", 1);
@@ -85,13 +84,12 @@ public class PlayerMove : MonoBehaviour
                 Debug.LogWarning("Cinemachine Camera não está atribuída, usando direção para frente local.");
                 _moveDirection.x = transform.forward.x * Speed;
                 _moveDirection.z = transform.forward.z * Speed;
->>>>>>> Stashed changes
+
             }
             
         }
 
-<<<<<<< Updated upstream
-=======
+
         // Lógica de pulo (só pode pular se estiver no chão)
         if (_controller.isGrounded && canJump && Input.GetButtonDown("Jump"))
         {
@@ -100,7 +98,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         // Aplica a gravidade
->>>>>>> Stashed changes
+
         _moveDirection.y -= Gravity * Time.deltaTime;
         _controller.Move(_moveDirection * Time.deltaTime);
     }
