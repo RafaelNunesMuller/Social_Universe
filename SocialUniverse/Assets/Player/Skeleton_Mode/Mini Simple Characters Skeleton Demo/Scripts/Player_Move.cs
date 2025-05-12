@@ -51,7 +51,7 @@ public class Player_Move : MonoBehaviour
             else
             {
                 MoveDirection = Vector3.zero;
-                anim.SetInteger("transition", 0);
+                
             }
 
         }
