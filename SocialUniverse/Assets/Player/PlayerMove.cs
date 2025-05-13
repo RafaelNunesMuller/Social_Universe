@@ -6,10 +6,13 @@ public class PlayerMove : MonoBehaviour
 {
     public float Speed;
     public float Gravity;
-
-    public float JumpForce = 5f; // Adicionamos a forÁa do pulo
+    public float JumpForce = 5f; // Adicionamos a for√ßa do pulo
     public bool canRotate = true;
-    public bool canJump = true; // Adicionamos esta vari·vel para controlar o pulo
+    public bool canJump = true; // Adicionamos esta vari√°vel para controlar o pulo
+
+    public float JumpForce = 5f; // Adicionamos a for√ßa do pulo
+    public bool canRotate = true;
+    public bool canJump = true; // Adicionamos esta vari√°vel para controlar o pulo
     private Animator anim;
     private Vector3 MoveDirection;
 
@@ -25,10 +28,10 @@ public class PlayerMove : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         if (cinemachineCamera == null)
         {
-            Debug.LogError("Cinemachine FreeLook Camera n„o foi atribuÌda ao script PlayerMove no objeto: " + gameObject.name);
+            Debug.LogError("Cinemachine FreeLook Camera n√£o foi atribu√≠da ao script PlayerMove no objeto: " + gameObject.name);
         }
 
-        // Oculta e prende o cursor do mouse no inÌcio do jogo
+        // Oculta e prende o cursor do mouse no in√≠cio do jogo
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -37,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
 
-        // Opcional: Permite liberar o cursor com a tecla Esc (˙til para debugging)
+        // Opcional: Permite liberar o cursor com a tecla Esc (√∫til para debugging)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = true;
@@ -47,41 +50,43 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        if (_controller.isGrounded)
+        // L√≥gica de movimento horizontal (aplicada sempre que a tecla W √© pressionada)
+        if (Input.GetKey(KeyCode.W))
         {
-            _moveDirection = Vector3.zero;
-
-            if (Input.GetKey(KeyCode.W))
+            if (cinemachineCamera != null && canRotate)
             {
+
 
                 if (cinemachineCamera != null)
                 {
-                    // ObtÈm a rotaÁ„o Y da c‚mera Cinemachine
+                    // Obt√©m a rota√ß√£o Y da c√¢mera Cinemachine
                     float cameraYaw = cinemachineCamera.transform.eulerAngles.y;
                     Quaternion targetRotation = Quaternion.Euler(0f, cameraYaw, 0f);
 
-                    // Aplica a rotaÁ„o da c‚mera ao player
+                    // Aplica a rota√ß√£o da c√¢mera ao player
                     transform.rotation = targetRotation;
 
-                    // Define a direÁ„o para frente baseada NA ROTA«√O DO PLAYER (agora alinhada com a c‚mera)
+                    // Define a dire√ß√£o para frente baseada NA ROTA√á√ÉO DO PLAYER (agora alinhada com a c√¢mera)
                     _moveDirection = transform.forward * Speed;
                 }
                 else
                 {
-                    Debug.LogWarning("Cinemachine Camera n„o est· atribuÌda, usando direÁ„o para frente local.");
+                    Debug.LogWarning("Cinemachine Camera n√£o est√° atribu√≠da, usando dire√ß√£o para frente local.");
                     _moveDirection = transform.forward * Speed;
                 }
 
                 
                 
                 
-                _moveDirection.x = transform.forward.x * Speed; // Move na direÁ„o horizontal
-                _moveDirection.z = transform.forward.z * Speed; // Move na direÁ„o vertical (no plano horizontal)
+                _moveDirection.x = transform.forward.x * Speed; // Move na dire√ß√£o horizontal
+                _moveDirection.z = transform.forward.z * Speed; // Move na dire√ß√£o vertical (no plano horizontal)
                 anim.SetInteger("transition", 1);
+
+
             }
             else if (cinemachineCamera == null)
             {
-                Debug.LogWarning("Cinemachine Camera n„o est· atribuÌda, usando direÁ„o para frente local.");
+                Debug.LogWarning("Cinemachine Camera n√£o est√° atribu√≠da, usando dire√ß√£o para frente local.");
                 _moveDirection.x = transform.forward.x * Speed;
                 _moveDirection.z = transform.forward.z * Speed;
 
@@ -90,16 +95,30 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        // LÛgica de pulo (sÛ pode pular se estiver no ch„o)
+        // L√≥gica de pulo (s√≥ pode pular se estiver no ch√£o)
         if (_controller.isGrounded && canJump && Input.GetButtonDown("Jump"))
         {
             _moveDirection.y = JumpForce;
             anim.SetInteger("transition", 2);
         }
+        else
+        {
+            _moveDirection.x = 0f;
+            _moveDirection.z = 0f;
+        }
+
+
+        // L√≥gica de pulo (s√≥ pode pular se estiver no ch√£o)
+        if (_controller.isGrounded && canJump && Input.GetButtonDown("Jump"))
+        {
+            _moveDirection.y = JumpForce;
+        }
 
         // Aplica a gravidade
 
         _moveDirection.y -= Gravity * Time.deltaTime;
+
+        // Move o CharacterController
         _controller.Move(_moveDirection * Time.deltaTime);
     }
 }
