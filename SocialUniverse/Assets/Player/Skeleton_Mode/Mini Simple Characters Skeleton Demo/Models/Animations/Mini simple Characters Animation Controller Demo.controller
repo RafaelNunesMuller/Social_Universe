@@ -1,11 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+
 --- !u!1101 &-8986799962131534113
 AnimatorStateTransition:
+
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
@@ -26,6 +29,7 @@ AnimatorStateTransition:
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-8101198245422666900
+
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
