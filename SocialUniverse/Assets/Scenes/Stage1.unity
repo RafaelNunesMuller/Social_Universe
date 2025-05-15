@@ -530,6 +530,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16f8913686ada4f42bb8d6cc52545e91, type: 3}
   m_PrefabInstance: {fileID: 64762917}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &73524052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73524054}
+  - component: {fileID: 73524053}
+  m_Layer: 0
+  m_Name: Enemy Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73524053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73524052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_Size: {x: 20, y: 2, z: 20}
+  m_Center: {x: 10, y: 1, z: 10}
+  m_Area: 3
+  m_AffectedAgents: ffffffff
+--- !u!4 &73524054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73524052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 331.48, y: 2.9, z: 321.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!1001 &77167356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3476,13 +3528,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322571099}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2534013, y: 4.3928544e-10, z: -1.1507129e-10, w: 0.9673613}
-  m_LocalPosition: {x: 382.921, y: 7.04, z: 320.135}
+  m_LocalRotation: {x: 0.17514136, y: -0, z: -0, w: 0.9845433}
+  m_LocalPosition: {x: 382.921, y: 6.41, z: 321.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 18.089, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.174, y: 0, z: 0}
 --- !u!114 &1322571103
 MonoBehaviour:
   m_ObjectHideFlags: 0
