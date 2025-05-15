@@ -3553,15 +3553,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 382.022
+      value: 336.024
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.847
+      value: 4.253
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 325.605
+      value: 331.691
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3597,14 +3597,12 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8189980434977739222, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1263057774}
   m_SourcePrefab: {fileID: 100100000, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
 --- !u!1 &1263057773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8189980434977739222, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
   m_PrefabInstance: {fileID: 1263057772}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &1263057774
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6189,4 +6187,3 @@ SceneRoots:
   - {fileID: 61900671}
   - {fileID: 61195777}
   - {fileID: 73524054}
-  - {fileID: 1202339283}
