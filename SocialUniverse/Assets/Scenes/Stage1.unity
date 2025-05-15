@@ -588,10 +588,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> 6756cef1845089e575343ff95e50bda2ed06e839
 --- !u!1001 &77167356
 PrefabInstance:
   m_ObjectHideFlags: 0
