@@ -10,9 +10,6 @@ public class PlayerMove : MonoBehaviour
     public bool canRotate = true;
     public bool canJump = true; // Adicionamos esta variável para controlar o pulo
 
-    public float JumpForce = 5f; // Adicionamos a força do pulo
-    public bool canRotate = true;
-    public bool canJump = true; // Adicionamos esta variável para controlar o pulo
     private Animator anim;
     private Vector3 MoveDirection;
 
