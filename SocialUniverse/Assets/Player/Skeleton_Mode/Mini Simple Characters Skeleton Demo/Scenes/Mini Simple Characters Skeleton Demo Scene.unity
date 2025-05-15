@@ -720,7 +720,7 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1 &1782031781
+--- !u!1 &1917187246
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -728,23 +728,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1782031784}
-  - component: {fileID: 1782031783}
-  - component: {fileID: 1782031782}
+  - component: {fileID: 1917187249}
+  - component: {fileID: 1917187248}
+  - component: {fileID: 1917187247}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: TerrainTeste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!154 &1782031782
+--- !u!154 &1917187247
 TerrainCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782031781}
+  m_GameObject: {fileID: 1917187246}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -756,18 +756,18 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 44bfecd69d488014b8a9d1dc400b2f2e, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 6a4e46d99bf3fd243b69b1a965156e81, type: 2}
   m_EnableTreeColliders: 1
---- !u!218 &1782031783
+--- !u!218 &1917187248
 Terrain:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782031781}
+  m_GameObject: {fileID: 1917187246}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 44bfecd69d488014b8a9d1dc400b2f2e, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 6a4e46d99bf3fd243b69b1a965156e81, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -798,13 +798,13 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
---- !u!4 &1782031784
+--- !u!4 &1917187249
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782031781}
+  m_GameObject: {fileID: 1917187246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -949,6 +949,10 @@ PrefabInstance:
     - target: {fileID: 2468889828458600031, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621290949276796938, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.217
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1172,5 +1176,5 @@ SceneRoots:
   - {fileID: 4218229021357403643}
   - {fileID: 6320997895710835620}
   - {fileID: 2183367242367986382}
-  - {fileID: 1782031784}
   - {fileID: 702788190}
+  - {fileID: 1917187249}
