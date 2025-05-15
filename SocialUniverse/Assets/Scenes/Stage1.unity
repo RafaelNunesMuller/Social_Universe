@@ -530,11 +530,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16f8913686ada4f42bb8d6cc52545e91, type: 3}
   m_PrefabInstance: {fileID: 64762917}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> 6756cef1845089e575343ff95e50bda2ed06e839
 --- !u!1 &73524052
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,11 +541,6 @@ GameObject:
   - component: {fileID: 73524054}
   - component: {fileID: 73524053}
   m_Layer: 0
-<<<<<<< HEAD
-  m_Name: GameObject
-=======
-  m_Name: Enemy Area
->>>>>>> 6756cef1845089e575343ff95e50bda2ed06e839
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
