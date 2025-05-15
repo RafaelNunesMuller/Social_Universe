@@ -530,14 +530,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16f8913686ada4f42bb8d6cc52545e91, type: 3}
   m_PrefabInstance: {fileID: 64762917}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 --- !u!1 &73524052
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,13 +541,6 @@ GameObject:
   - component: {fileID: 73524054}
   - component: {fileID: 73524053}
   m_Layer: 0
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  m_Name: Enemy Area
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -593,13 +578,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 --- !u!1001 &77167356
 PrefabInstance:
   m_ObjectHideFlags: 0
