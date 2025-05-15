@@ -3333,7 +3333,7 @@ GameObject:
   - component: {fileID: 1202339281}
   - component: {fileID: 1202339280}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Barreira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
