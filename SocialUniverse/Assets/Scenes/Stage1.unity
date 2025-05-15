@@ -532,7 +532,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &73524052
@@ -547,7 +550,10 @@ GameObject:
   - component: {fileID: 73524053}
   m_Layer: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Name: Enemy Area
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_TagString: Untagged
@@ -588,6 +594,9 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
