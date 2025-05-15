@@ -106,7 +106,7 @@ public class Player_Move : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        if (move != Vector3.zero && Input.GetButton("Fire3") && controller.isGrounded)
+        if (move != Vector3.zero && controller.isGrounded && Input.GetButtonUp("Fire3"))
         {
             anim.SetBool("isWalking", false);
             controller.Move(speed * Time.deltaTime * move); // Aplica movimentação
