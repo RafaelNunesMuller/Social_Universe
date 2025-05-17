@@ -3,13 +3,13 @@ using UnityEngine;
 public class Player_Move : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // Referência ao CharacterController da Unity
+    // Referï¿½ncia ao CharacterController da Unity
     private CharacterController controller;
 
     // Velocidade de movimento
     public float speed = 5f;
 
-    // Força do pulo
+    // Forï¿½a do pulo
     public float jumpForce = 8f;
 
     // Gravidade aplicada ao personagem
@@ -18,24 +18,24 @@ public class Player_Move : MonoBehaviour
     // Velocidade vertical (queda, pulo, etc.)
     private float verticalVelocity;
 
-    // Referência ao Animator (para animações)
+    // Referï¿½ncia ao Animator (para animaï¿½ï¿½es)
     private Animator anim;
 
-    // Referência à câmera (para rotação com o mouse)
+    // Referï¿½ncia ï¿½ cï¿½mera (para rotaï¿½ï¿½o com o mouse)
     public Transform cameraTransform;
 
     // Sensibilidade do mouse
     public float mouseSensitivity = 2f;
 
-    // Acumulador para rotação vertical (câmera)
+    // Acumulador para rotaï¿½ï¿½o vertical (cï¿½mera)
     private float xRotation = 0f;
 
-    // Para controlar ataque (gatilho da animação)
+    // Para controlar ataque (gatilho da animaï¿½ï¿½o)
     private bool isAttacking = false;
 
     void Start()
     {
-        // Pegando os componentes necessários na cena
+        // Pegando os componentes necessï¿½rios na cena
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
 
@@ -50,14 +50,14 @@ public class Player_Move : MonoBehaviour
         // ----------- PULO ---------------------
         if (controller.isGrounded && verticalVelocity < 0)
         {
-            verticalVelocity = -2f; // "cola" no chão
+            verticalVelocity = -2f; // "cola" no chï¿½o
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
         {
             verticalVelocity = jumpForce;
 
-            // Ativa animação de pulo (trigger)
+            // Ativa animaï¿½ï¿½o de pulo (trigger)
             anim.SetTrigger("jump");
         }
 
@@ -69,18 +69,20 @@ public class Player_Move : MonoBehaviour
         // ----------- ATAQUE ----------------------
         if (Input.GetButtonDown("Fire1") && !isAttacking)
         {
-            isAttacking = true;
-            anim.SetTrigger("attack"); // Ativa animação de ataque (trigger)
+            anim.SetBool("isAttacking", true); // Ativa animaï¿½ï¿½o de ataque (trigger)
+        }
+        else{
+            anim.SetBool("isAttacking", false);
         }
 
-        // ----------- ROTACIONA O PLAYER COM O MOUSE (CÂMERA) ----------------
+        // ----------- ROTACIONA O PLAYER COM O MOUSE (Cï¿½MERA) ----------------
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         // Roda o player horizontalmente
         transform.Rotate(Vector3.up * mouseX);
 
-        // Roda a câmera verticalmente (limitada para não girar demais)
+        // Roda a cï¿½mera verticalmente (limitada para nï¿½o girar demais)
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -88,17 +90,17 @@ public class Player_Move : MonoBehaviour
 
     public void Move()
     {
-        // ----------- MOVIMENTAÇÃO ----------------
+        // ----------- MOVIMENTAï¿½ï¿½O ----------------
         float moveX = Input.GetAxis("Horizontal"); // A/D
         float moveZ = Input.GetAxis("Vertical");   // W/S
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
 
-        // ----------- ANIMAÇÃO DE WALK/IDLE -------------
-        // Se estiver se movendo, ativa a animação de corrida (trigger bool)
-        if (move != Vector3.zero && controller.isGrounded)
+        // ----------- ANIMAï¿½ï¿½O DE WALK/IDLE -------------
+        // Se estiver se movendo, ativa a animaï¿½ï¿½o de corrida (trigger bool)
+        if (move != Vector3.zero )
         {
-            controller.Move(speed * Time.deltaTime * move); // Aplica movimentação
+            controller.Move(speed * Time.deltaTime * move ); // Aplica movimentaï¿½ï¿½o
             anim.SetBool("isWalking", true);
         }
         else
@@ -106,21 +108,30 @@ public class Player_Move : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        if (move != Vector3.zero && controller.isGrounded && Input.GetButtonUp("Fire3"))
+        if (move != Vector3.zero  && Input.GetButton("Fire3"))
         {
-            anim.SetBool("isWalking", false);
-            controller.Move(speed * Time.deltaTime * move); // Aplica movimentação
             anim.SetBool("isRuning", true);
+            controller.Move(speed * Time.deltaTime * move ); // Aplica movimentaï¿½ï¿½o
+            
         }
         else
         {
             anim.SetBool("isRuning", false);
         }
 
+        if (Input.GetButtonDown("Fire2"))
+        {
+            anim.SetBool("isDefending", true);
+        }
+        else
+        {
+            anim.SetBool("isDefending", false);
+        }
+
     }
 
 
-    // Chamado pela animação no fim do ataque para desbloquear
+    // Chamado pela animaï¿½ï¿½o no fim do ataque para desbloquear
     public void EndAttack()
     {
         isAttacking = false;
