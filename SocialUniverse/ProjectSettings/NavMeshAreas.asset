@@ -10,7 +10,7 @@ NavMeshProjectSettings:
   - name: Not Walkable
     cost: 1
   - name: Jump
-    cost: 2
+    cost: 3
   - name: EnemyZone
     cost: 1
   - name: 
