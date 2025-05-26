@@ -33,6 +33,11 @@ public class Player_Move : MonoBehaviour
     // Para controlar ataque (gatilho da anima��o)
     private bool isAttacking = false;
 
+    public float MaxHealth = 100f;
+
+    public float Health;
+
+
     void Start()
     {
         // Pegando os componentes necess�rios na cena
@@ -41,6 +46,8 @@ public class Player_Move : MonoBehaviour
 
         // Bloqueia e esconde o cursor no centro da tela
         Cursor.lockState = CursorLockMode.Locked;
+        Health = MaxHealth;
+
     }
 
     void Update()
@@ -126,6 +133,16 @@ public class Player_Move : MonoBehaviour
         else
         {
             anim.SetBool("isDefending", false);
+        }
+
+        if (Health ==0)
+        {
+            anim.SetBool("DEATH", true);
+        }
+
+        else
+        {
+            anim.SetBool("DEATH", false);
         }
 
     }
