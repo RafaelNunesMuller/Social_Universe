@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 136714014}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534013, y: 0.000000011742084, z: -0.0000000030758516, w: 0.9673613}
-  m_LocalPosition: {x: 179.08359, y: 3.22, z: 178.53247}
+  m_LocalPosition: {x: 177.13, y: 3.22, z: 178.53247}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -671,7 +671,7 @@ Transform:
   m_GameObject: {fileID: 486851978}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534013, y: 0.000000012141649, z: -0.0000000046011874, w: 0.9673613}
-  m_LocalPosition: {x: 179.08359, y: 3.22, z: 178.53247}
+  m_LocalPosition: {x: 177.13, y: 3.22, z: 178.53247}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1510,6 +1510,7 @@ MonoBehaviour:
   typingSpeed: 0.05
   cinemachineCamera: {fileID: 486851983}
   cameraTransitionTime: 1
+  jumpReactivationDelay: 0.2
 --- !u!4 &1678287219
 Transform:
   m_ObjectHideFlags: 0
@@ -1560,7 +1561,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  Gravity: 250
+  Gravity: 120
+  JumpForce: 5
+  canRotate: 1
+  canJump: 1
   cinemachineCamera: {fileID: 486851983}
 --- !u!23 &1792267988
 MeshRenderer:
@@ -1624,7 +1628,7 @@ Transform:
   m_GameObject: {fileID: 1792267984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 179.08359, y: 0.97, z: 182.53247}
+  m_LocalPosition: {x: 177.13, y: 0.97, z: 182.53247}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1677,7 +1681,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
