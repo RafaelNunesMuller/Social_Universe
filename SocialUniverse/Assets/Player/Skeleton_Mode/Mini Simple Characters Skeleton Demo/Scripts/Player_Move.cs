@@ -3,13 +3,13 @@ using UnityEngine;
 public class Player_Move : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // Refer�ncia ao CharacterController da Unity
+    // Referência ao CharacterController da Unity
     private CharacterController controller;
 
     // Velocidade de movimento
     public float speed = 5f;
 
-    // For�a do pulo
+    // Força do pulo
     public float jumpForce = 8f;
 
     // Gravidade aplicada ao personagem
@@ -18,139 +18,192 @@ public class Player_Move : MonoBehaviour
     // Velocidade vertical (queda, pulo, etc.)
     private float verticalVelocity;
 
-    // Refer�ncia ao Animator (para anima��es)
+    // Referência ao Animator (para animações)
     private Animator anim;
 
-    // Refer�ncia � c�mera (para rota��o com o mouse)
+    // Referência à câmera (para rotação com o mouse)
     public Transform cameraTransform;
 
     // Sensibilidade do mouse
     public float mouseSensitivity = 2f;
 
-    // Acumulador para rota��o vertical (c�mera)
+    // Acumulador para rotação vertical (câmera)
     private float xRotation = 0f;
 
-    // Para controlar ataque (gatilho da anima��o)
+    // Para controlar ataque (gatilho da animação)
     private bool isAttacking = false;
+    public float attackCooldown = 0.5f; // Adicionado cooldown para ataque
+    private float lastAttackTime = -0.5f; // Inicializado para permitir o primeiro ataque
 
     public float MaxHealth = 100f;
-
     public float Health;
 
+    // Variáveis de controle de diálogo
+    public bool canMove = true;    // Controla se o jogador pode andar
+    public bool canRotate = true;  // Controla se o jogador pode rotacionar com o mouse
+    public bool canJump = true;    // Controla se o jogador pode pular
+    public bool canAttack = true;  // Controla se o jogador pode atacar
+    public bool canDefend = true;  // Controla se o jogador pode defender
 
     void Start()
     {
-        // Pegando os componentes necess�rios na cena
+        // Pegando os componentes necessários na cena
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
 
         // Bloqueia e esconde o cursor no centro da tela
         Cursor.lockState = CursorLockMode.Locked;
         Health = MaxHealth;
-
     }
 
     void Update()
     {
-
-        Move();
-        // ----------- PULO ---------------------
-        if (controller.isGrounded && verticalVelocity < 0)
-        {
-            verticalVelocity = -2f; // "cola" no ch�o
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
-        {
-            verticalVelocity = jumpForce;
-
-            // Ativa anima��o de pulo (trigger)
-            anim.SetTrigger("jump");
-        }
-
-        // Aplica gravidade
+        // Aplica a gravidade sempre, independentemente do estado do chão
         verticalVelocity += gravity * Time.deltaTime;
+
+        // ----------- PULO ---------------------
+        if (controller.isGrounded)
+        {
+            // "cola" no chão apenas se estiver caindo
+            if (verticalVelocity < 0)
+            {
+                verticalVelocity = -2f;
+            }
+
+            if (canJump && Input.GetKeyDown(KeyCode.Space))
+            {
+                verticalVelocity = jumpForce;
+                anim.SetTrigger("jump");
+            }
+        }
+
+        // Aplica o movimento vertical
         Vector3 verticalMove = Vector3.up * verticalVelocity;
         controller.Move(verticalMove * Time.deltaTime);
 
+        // ----------- MOVIMENTAÇÃO ----------------
+        MovePlayerCharacter(); // Chamada para a função de movimentação
+
         // ----------- ATAQUE ----------------------
-        if (Input.GetButtonDown("Fire1") && !isAttacking)
+        // Permite atacar se canAttack for verdadeiro, o botão for pressionado, e o cooldown terminou
+        if (canAttack && Input.GetButtonDown("Fire1") && !isAttacking && Time.time >= lastAttackTime + attackCooldown)
         {
-            anim.SetBool("isAttacking", true); // Ativa anima��o de ataque (trigger)
+            isAttacking = true;
+            anim.SetBool("isAttacking", true);
+            lastAttackTime = Time.time;
         }
-        else{
+        // Se a animação de ataque está em andamento (isAttacking true), mantém a bool ativa no Animator
+        // para garantir que a animação seja reproduzida completamente até EndAttack() resetar isAttacking.
+        else if (isAttacking)
+        {
+            // Não faz nada aqui, a animação é controlada por EndAttack()
+        }
+        else
+        {
             anim.SetBool("isAttacking", false);
         }
 
-        // ----------- ROTACIONA O PLAYER COM O MOUSE (C�MERA) ----------------
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        // Roda o player horizontalmente
-        transform.Rotate(Vector3.up * mouseX);
-
-        // Roda a c�mera verticalmente (limitada para n�o girar demais)
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-    }
-
-    public void Move()
-    {
-        // ----------- MOVIMENTA��O ----------------
-        float moveX = Input.GetAxis("Horizontal"); // A/D
-        float moveZ = Input.GetAxis("Vertical");   // W/S
-
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-
-        // ----------- ANIMA��O DE WALK/IDLE -------------
-        // Se estiver se movendo, ativa a anima��o de corrida (trigger bool)
-        if (move != Vector3.zero )
-        {
-            controller.Move(speed * Time.deltaTime * move ); // Aplica movimenta��o
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isWalking", false);
-        }
-
-        if (move != Vector3.zero  && Input.GetButton("Fire3"))
-        {
-            anim.SetBool("isRuning", true);
-            controller.Move(speed * Time.deltaTime * move ); // Aplica movimenta��o
-            
-        }
-        else
-        {
-            anim.SetBool("isRuning", false);
-        }
-
-        if (Input.GetButtonDown("Fire2"))
+        // ----------- DEFESA ----------------------
+        if (canDefend && Input.GetButtonDown("Fire2"))
         {
             anim.SetBool("isDefending", true);
         }
-        else
+        else if (Input.GetButtonUp("Fire2")) // Adicionado Input.GetButtonUp para desativar a defesa ao soltar o botão
         {
             anim.SetBool("isDefending", false);
         }
 
-        if (Health ==0)
+        // ----------- ROTACIONA O PLAYER COM O MOUSE (CÂMERA) ----------------
+        if (canRotate)
         {
-            anim.SetBool("DEATH", true);
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+            // Roda o player horizontalmente
+            transform.Rotate(Vector3.up * mouseX);
+
+            // Roda a câmera verticalmente (limitada para não girar demais)
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+            if (cameraTransform != null) // Adicionado check para evitar NullReferenceError
+            {
+                cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            }
+            else
+            {
+                Debug.LogWarning("Camera Transform não atribuída ao Player_Move no Inspector!");
+            }
         }
 
+        // ----------- ANIMAÇÃO DE MORTE -------------
+        if (Health <= 0)
+        {
+            anim.SetBool("DEATH", true);
+            // Considerar desativar controles e outras lógicas aqui
+        }
         else
         {
             anim.SetBool("DEATH", false);
         }
-
     }
 
+    // Função de movimentação separada
+    public void MovePlayerCharacter()
+    {
+        if (!canMove)
+        {
+            // Se não pode mover, zera o input para evitar movimento residual
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isRuning", false);
+            return;
+        }
 
-    // Chamado pela anima��o no fim do ataque para desbloquear
+        float moveX = Input.GetAxis("Horizontal"); // A/D
+        float moveZ = Input.GetAxis("Vertical");    // W/S
+
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+
+        // Animação de Walk/Run
+        if (move.magnitude > 0) // Verifica se há algum movimento (moveX ou moveZ não são zero)
+        {
+            // Movimento de corrida (shift)
+            if (Input.GetButton("Fire3")) // Geralmente "Left Shift"
+            {
+                anim.SetBool("isRuning", true);
+                anim.SetBool("isWalking", false); // Garante que Walking não esteja ativo junto com Running
+                controller.Move(speed * 2f * Time.deltaTime * move); // Exemplo: dobro da velocidade para corrida
+            }
+            else
+            {
+                anim.SetBool("isRuning", false);
+                anim.SetBool("isWalking", true);
+                controller.Move(speed * Time.deltaTime * move);
+            }
+        }
+        else
+        {
+            // Parado
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isRuning", false);
+        }
+    }
+
+    // Chamado pela animação no fim do ataque para desbloquear
     public void EndAttack()
     {
         isAttacking = false;
+        anim.SetBool("isAttacking", false); // Garante que a bool do Animator seja resetada
+    }
+
+    // Exemplo de como o inimigo ou outro script pode causar dano
+    public void TakeDamage(float amount)
+    {
+        Health -= amount;
+        Debug.Log("Player Health: " + Health);
+        if (Health <= 0)
+        {
+            // Lógica de morte
+            Debug.Log("Player Morreu!");
+        }
     }
 }
