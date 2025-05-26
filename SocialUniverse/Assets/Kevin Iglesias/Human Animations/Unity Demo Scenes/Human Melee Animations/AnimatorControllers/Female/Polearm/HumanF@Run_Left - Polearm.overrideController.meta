@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f53bda5a992b345428dee941a5df2007
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 22100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165785
+  packageName: Human Melee Animations FREE
+  packageVersion: 2.0.1
+  assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Melee
+    Animations/AnimatorControllers/Female/Polearm/HumanF@Run_Left - Polearm.overrideController
+  uploadId: 757981
