@@ -5,14 +5,14 @@ public class HealthBar : MonoBehaviour
     public Slider HealthSlider;
     public float MaxHealth = 100f;
     public float Health;
-    private Animator anim;
 
     void Start()
     {
         Health = MaxHealth;
 
-        anim = GetComponent<Animator>();
     }
+
+   
 
     void Update()
     {
@@ -23,18 +23,16 @@ public class HealthBar : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            takeDamage(10);
+            TakeDamage(10);
         }
 
-        if (Health == 0)
-        {
-            anim.SetBool("DEATH", true);
-        }
 
     }
 
-    void takeDamage(float damage)
+    void TakeDamage(float damage)
     {
         Health -= damage;
     }
+
+
 }
