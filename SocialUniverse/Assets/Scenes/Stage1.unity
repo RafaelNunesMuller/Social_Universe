@@ -4115,8 +4115,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8189980434977739222, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263057774}
   m_SourcePrefab: {fileID: 100100000, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
+--- !u!1 &1263057773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8189980434977739222, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
+  m_PrefabInstance: {fileID: 1263057772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1263057774
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263057773}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 15
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 8
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1322571099
 GameObject:
   m_ObjectHideFlags: 0
@@ -4855,6 +4885,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 63aed3422d268be45a19642d59895c49, type: 3}
   m_PrefabInstance: {fileID: 1525110460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1636729483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1636729485}
+  - component: {fileID: 1636729484}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1636729484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636729483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.33333334
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 8c6efd425bb390a4faa0106232b639a9, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &1636729485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636729483}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1670484569
 GameObject:
   m_ObjectHideFlags: 0
@@ -6320,7 +6414,7 @@ GameObject:
   - component: {fileID: 2032778271}
   - component: {fileID: 2032778270}
   m_Layer: 0
-  m_Name: Enemy Area (House
+  m_Name: Enemy Area (House)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6351,13 +6445,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032778269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 137.59, y: 3.36, z: 246.3}
+  m_LocalRotation: {x: -0.02346137, y: -0, z: -0, w: 0.99972475}
+  m_LocalPosition: {x: 137.59, y: 3.43, z: 246.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.689, y: 0, z: 0}
 --- !u!1001 &2047053759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6853,6 +6947,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 936672007}
+  - {fileID: 1636729485}
   - {fileID: 1322571102}
   - {fileID: 833885407}
   - {fileID: 541099889}
