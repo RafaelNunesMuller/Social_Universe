@@ -31,7 +31,6 @@ public class Player_Move : MonoBehaviour
     private float xRotation = 0f;
 
     // Para controlar ataque (gatilho da animação)
-    private bool isAttacking = false;
     public float attackCooldown = 0.5f; // Adicionado cooldown para ataque
     private float lastAttackTime = -0.5f; // Inicializado para permitir o primeiro ataque
 
@@ -86,18 +85,14 @@ public class Player_Move : MonoBehaviour
 
         // ----------- ATAQUE ----------------------
         // Permite atacar se canAttack for verdadeiro, o botão for pressionado, e o cooldown terminou
-        if (canAttack && Input.GetButtonDown("Fire1") && !isAttacking && Time.time >= lastAttackTime + attackCooldown)
+        if (canAttack && Input.GetButtonDown("Fire1") && Time.time >= lastAttackTime + attackCooldown)
         {
-            isAttacking = true;
             anim.SetBool("isAttacking", true);
             lastAttackTime = Time.time;
         }
         // Se a animação de ataque está em andamento (isAttacking true), mantém a bool ativa no Animator
         // para garantir que a animação seja reproduzida completamente até EndAttack() resetar isAttacking.
-        else if (isAttacking)
-        {
-            // Não faz nada aqui, a animação é controlada por EndAttack()
-        }
+        
         else
         {
             anim.SetBool("isAttacking", false);
@@ -171,7 +166,7 @@ public class Player_Move : MonoBehaviour
             {
                 anim.SetBool("isRuning", true);
                 anim.SetBool("isWalking", false); // Garante que Walking não esteja ativo junto com Running
-                controller.Move(speed * 2f * Time.deltaTime * move); // Exemplo: dobro da velocidade para corrida
+                controller.Move(speed * 3f * Time.deltaTime * move); // Exemplo: dobro da velocidade para corrida
             }
             else
             {
@@ -191,7 +186,6 @@ public class Player_Move : MonoBehaviour
     // Chamado pela animação no fim do ataque para desbloquear
     public void EndAttack()
     {
-        isAttacking = false;
         anim.SetBool("isAttacking", false); // Garante que a bool do Animator seja resetada
     }
 

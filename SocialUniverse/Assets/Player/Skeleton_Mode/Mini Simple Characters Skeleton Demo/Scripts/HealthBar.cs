@@ -3,13 +3,12 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider HealthSlider;
-    public float MaxHealth = 100f;
+    public float MaxHealth = 100;
     public float Health;
 
     void Start()
     {
         Health = MaxHealth;
-
     }
 
    
