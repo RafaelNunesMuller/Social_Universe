@@ -3,16 +3,13 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider HealthSlider;
-    public float MaxHealth = 100f;
+    public float MaxHealth = 100;
     public float Health;
 
     void Start()
     {
         Health = MaxHealth;
-
     }
-
-   
 
     void Update()
     {
@@ -26,13 +23,11 @@ public class HealthBar : MonoBehaviour
             TakeDamage(10);
         }
 
-
     }
 
     void TakeDamage(float damage)
     {
         Health -= damage;
     }
-
 
 }
