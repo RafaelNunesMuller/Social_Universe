@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DealDamage : MonoBehaviour
 {
-    [SerializeField] public float damage;
+     public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public void OnTriggerEnter(Collider other)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealthEnemy : MonoBehaviour
 {
-    [SerializeField] public float Health;
+    public float Health;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 

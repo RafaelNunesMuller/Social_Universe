@@ -65,14 +65,14 @@ ModelImporter:
       - time: 0.30337077
         functionName: EnableWeaponCollider
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 5fa017c801089f347b5be36a4fb5412f, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.5
         functionName: DisableWeaponCollider
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 5fa017c801089f347b5be36a4fb5412f, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
