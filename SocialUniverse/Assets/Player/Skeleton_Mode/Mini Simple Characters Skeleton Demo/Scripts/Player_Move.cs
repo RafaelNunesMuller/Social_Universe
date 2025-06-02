@@ -50,6 +50,12 @@ public class Player_Move : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
 
+        if (!controller.enabled)
+        {
+            controller.enabled = true;
+            Debug.LogWarning("CharacterController estava desativado e foi ativado no Start.");
+        }
+
         // Bloqueia e esconde o cursor no centro da tela
         Cursor.lockState = CursorLockMode.Locked;
         Health = MaxHealth;
@@ -78,10 +84,8 @@ public class Player_Move : MonoBehaviour
 
         // Aplica o movimento vertical
         Vector3 verticalMove = Vector3.up * verticalVelocity;
-        if (controller != null && controller.enabled)
-        {
-            controller.Move(verticalMove * Time.deltaTime);
-        }
+        controller.Move(verticalMove * Time.deltaTime);
+        
 
 
         // ----------- MOVIMENTAÇÃO ----------------
@@ -138,12 +142,7 @@ public class Player_Move : MonoBehaviour
         if (Health <= 0)
         {
             anim.SetBool("DEATH", true);
-            canMove = false;
-            canJump = false;
-            canAttack = false;
-            canDefend = false;
-            canRotate = false;
-            return; // sai do Update para evitar chamadas do Move()
+            
         }
 
         else
@@ -178,21 +177,16 @@ public class Player_Move : MonoBehaviour
             {
                 anim.SetBool("isRuning", true);
                 anim.SetBool("isWalking", false); // Garante que Walking não esteja ativo junto com Running
-                if (controller != null && controller.enabled)
-                {
-                    controller.Move(speed * 3f * Time.deltaTime * move);
-                }
+                controller.Move(speed * 3f * Time.deltaTime * move);
+                
                 // Exemplo: dobro da velocidade para corrida
             }
             else
             {
                 anim.SetBool("isRuning", false);
                 anim.SetBool("isWalking", true);
-                if (controller != null && controller.enabled)
-                {
-                    controller.Move(speed * Time.deltaTime * move);
-                }
-
+                controller.Move(speed * Time.deltaTime * move);
+            
             }
         }
         else

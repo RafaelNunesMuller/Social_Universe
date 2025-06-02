@@ -15,7 +15,7 @@ public class DealDamage : MonoBehaviour
     }
     void Start()
     {
-        
+        OnTriggerEnter(null);
     }
 
     // Update is called once per frame

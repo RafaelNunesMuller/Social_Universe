@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Attck : MonoBehaviour
+public class Attack : MonoBehaviour
 {
     public Animator anim;
     public Collider weaponCollider;

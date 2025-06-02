@@ -1609,11 +1609,6 @@ MonoBehaviour:
   HealthSlider: {fileID: 222447925}
   MaxHealth: 100
   Health: 0
---- !u!95 &1350935665 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1116371902028168016, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
-  m_PrefabInstance: {fileID: 4218229021357403643}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1350935666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,7 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa017c801089f347b5be36a4fb5412f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1350935665}
+  anim: {fileID: 0}
   weaponCollider: {fileID: 1644570649}
 --- !u!4 &1506212655 stripped
 Transform:
@@ -1773,7 +1768,7 @@ GameObject:
   - component: {fileID: 1917187248}
   - component: {fileID: 1917187247}
   m_Layer: 0
-  m_Name: TerrainTeste
+  m_Name: terrainTeste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
