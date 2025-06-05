@@ -657,6 +657,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8189980434977739222, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 702788206}
+    - targetCorrespondingSourceObject: {fileID: 7229817629626485462, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1956878617}
+    - targetCorrespondingSourceObject: {fileID: 7229817629626485462, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1956878616}
   m_SourcePrefab: {fileID: 100100000, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
 --- !u!1 &702788191 stripped
 GameObject:
@@ -1249,7 +1255,7 @@ Transform:
   m_GameObject: {fileID: 1071010115}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.79, z: 0}
+  m_LocalPosition: {x: 0.74, y: 0.05, z: 2.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1611,7 +1617,7 @@ MonoBehaviour:
   HealthSlider: {fileID: 222447925}
   MaxHealth: 100
   Health: 0
---- !u!114 &1350935666
+--- !u!114 &1350935668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1620,11 +1626,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350935649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa017c801089f347b5be36a4fb5412f, type: 3}
+  m_Script: {fileID: 11500000, guid: 63cf80a357779f348a7c6f6eb040cae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthSlider: {fileID: 222447925}
+  Health: 0
+  MaxHealth: 100
   anim: {fileID: 0}
-  weaponCollider: {fileID: 1644570649}
 --- !u!4 &1506212655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3973605632031656910, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
@@ -1652,7 +1660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b65defabb919bd4bab14ad5a4784c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 43.4
+  anim: {fileID: 0}
+  weaponCollider: {fileID: 1644570649}
 --- !u!65 &1644570649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1883,6 +1893,47 @@ Transform:
   - {fileID: 2133622349}
   m_Father: {fileID: 1840348959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1956878612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7229817629626485462, guid: cd0fa9e8cc332264a903969f587cf47a, type: 3}
+  m_PrefabInstance: {fileID: 702788190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1956878616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956878612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7756b007b29e04a8b83f05721c3c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  anim: {fileID: 0}
+  weaponCollider: {fileID: 1956878617}
+--- !u!65 &1956878617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956878612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.251132, y: 1.0530325, z: 0.06339658}
+  m_Center: {x: -0.005817382, y: 0.68488777, z: 0.012865486}
 --- !u!4 &2133622349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4904959823963481817, guid: 8533b4b7d25cfea40a34848f200ce0e0, type: 3}
@@ -1998,7 +2049,7 @@ PrefabInstance:
       addedObject: {fileID: 1350935664}
     - targetCorrespondingSourceObject: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1350935666}
+      addedObject: {fileID: 1350935668}
   m_SourcePrefab: {fileID: 100100000, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
 --- !u!1001 &5890817687305839737
 PrefabInstance:

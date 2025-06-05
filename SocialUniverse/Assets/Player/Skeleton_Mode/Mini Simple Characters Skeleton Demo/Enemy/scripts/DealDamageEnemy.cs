@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DealDamage : MonoBehaviour
+public class DealDamageEnemy : MonoBehaviour
 {
      public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -9,10 +9,10 @@ public class DealDamage : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Player"))
         {
-            HealthEnemy enemy = other.GetComponent<HealthEnemy>();
-            enemy.TakeDamage(damage);
+            HealthPlayer Player = other.GetComponent<HealthPlayer>();
+            Player.TakeDamage(damage);
         }
     }
     void Start()
