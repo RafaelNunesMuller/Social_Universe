@@ -4,7 +4,6 @@ public class DealDamageEnemy : MonoBehaviour
 {
      public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Animator anim;
     public BoxCollider weaponCollider;
 
     public void OnTriggerEnter(Collider other)
@@ -18,7 +17,6 @@ public class DealDamageEnemy : MonoBehaviour
     void Start()
     {
         OnTriggerEnter(null);
-        anim = GetComponent<Animator>();
         weaponCollider = GetComponent<BoxCollider>();
 
         weaponCollider.enabled = false;
@@ -26,10 +24,7 @@ public class DealDamageEnemy : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") )
-        {
-            anim.SetBool("isAttacking", true);
-        }
+        
     }
 
 
