@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthEnemy : MonoBehaviour
+public class HealthPlayer : MonoBehaviour
 {
     public Slider HealthSlider;
     public float Health;
