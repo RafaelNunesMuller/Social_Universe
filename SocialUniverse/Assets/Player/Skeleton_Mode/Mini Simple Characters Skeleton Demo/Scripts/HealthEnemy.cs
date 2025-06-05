@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthEnemy : MonoBehaviour
 {
-    [SerializeField] public float Health;
+    public Slider HealthSlider;
+    public float Health;
+    public float MaxHealth = 100;
+    public Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
@@ -13,12 +18,24 @@ public class HealthEnemy : MonoBehaviour
     }
     void Start()
     {
-        
+        Health = MaxHealth;
+        anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (HealthSlider.value != Health)
+        {
+            HealthSlider.value = Health;
+        }
+
+        if (Health <= 0)
+        {
+            anim.SetBool("DEATH", true);
+            Destroy(gameObject);
+        }
+
     }
 }

@@ -34,7 +34,7 @@ public class Player_Move : MonoBehaviour
     public float attackCooldown = 0.5f; // Adicionado cooldown para ataque
     private float lastAttackTime = -0.5f; // Inicializado para permitir o primeiro ataque
 
-    public float MaxHealth = 100f;
+    public  float MaxHealth;
     public float Health;
 
     // Variáveis de controle de diálogo
@@ -49,6 +49,12 @@ public class Player_Move : MonoBehaviour
         // Pegando os componentes necessários na cena
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+
+        if (!controller.enabled)
+        {
+            controller.enabled = true;
+            Debug.LogWarning("CharacterController estava desativado e foi ativado no Start.");
+        }
 
         // Bloqueia e esconde o cursor no centro da tela
         Cursor.lockState = CursorLockMode.Locked;
@@ -79,6 +85,8 @@ public class Player_Move : MonoBehaviour
         // Aplica o movimento vertical
         Vector3 verticalMove = Vector3.up * verticalVelocity;
         controller.Move(verticalMove * Time.deltaTime);
+        
+
 
         // ----------- MOVIMENTAÇÃO ----------------
         MovePlayerCharacter(); // Chamada para a função de movimentação
@@ -134,8 +142,9 @@ public class Player_Move : MonoBehaviour
         if (Health <= 0)
         {
             anim.SetBool("DEATH", true);
-            // Considerar desativar controles e outras lógicas aqui
+            
         }
+
         else
         {
             anim.SetBool("DEATH", false);
@@ -145,6 +154,8 @@ public class Player_Move : MonoBehaviour
     // Função de movimentação separada
     public void MovePlayerCharacter()
     {
+        
+
         if (!canMove)
         {
             // Se não pode mover, zera o input para evitar movimento residual
@@ -166,13 +177,16 @@ public class Player_Move : MonoBehaviour
             {
                 anim.SetBool("isRuning", true);
                 anim.SetBool("isWalking", false); // Garante que Walking não esteja ativo junto com Running
-                controller.Move(speed * 3f * Time.deltaTime * move); // Exemplo: dobro da velocidade para corrida
+                controller.Move(speed * 3f * Time.deltaTime * move);
+                
+                // Exemplo: dobro da velocidade para corrida
             }
             else
             {
                 anim.SetBool("isRuning", false);
                 anim.SetBool("isWalking", true);
                 controller.Move(speed * Time.deltaTime * move);
+            
             }
         }
         else

@@ -11,8 +11,6 @@ public class HealthBar : MonoBehaviour
         Health = MaxHealth;
     }
 
-   
-
     void Update()
     {
         if (HealthSlider.value != Health)
@@ -25,13 +23,11 @@ public class HealthBar : MonoBehaviour
             TakeDamage(10);
         }
 
-
     }
 
     void TakeDamage(float damage)
     {
         Health -= damage;
     }
-
 
 }
