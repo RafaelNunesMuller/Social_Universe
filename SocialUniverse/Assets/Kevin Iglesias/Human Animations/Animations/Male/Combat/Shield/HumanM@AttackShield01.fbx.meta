@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d2ab4aa614462246829b9331cb95e53
+guid: 39df77266a31a2547b7cc6c67a54a62c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -970,6 +970,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Male/Combat/Shield/HumanM@AttackShield01.fbx
-  uploadId: 757981
+  uploadId: 762275

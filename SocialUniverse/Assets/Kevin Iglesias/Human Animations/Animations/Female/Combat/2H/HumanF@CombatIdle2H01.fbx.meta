@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 56903e227c753a44a9c1688955f100ac
+guid: 1ad5e2c82dc0082448aa849151560b5d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -970,6 +970,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Female/Combat/2H/HumanF@CombatIdle2H01.fbx
-  uploadId: 757981
+  uploadId: 762275

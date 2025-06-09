@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23753496f5946c74f81b828021e7118f
+guid: a49687cd25f3bf543a12433d4e815a73
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -970,6 +970,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Female/Combat/Polearm/HumanF@CombatIdlePolearm01.fbx
-  uploadId: 757981
+  uploadId: 762275

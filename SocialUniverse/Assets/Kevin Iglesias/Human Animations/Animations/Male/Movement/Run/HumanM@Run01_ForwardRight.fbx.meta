@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9158d2cb8e960164ea668ad748e614fc
+guid: 152af2cd00aaae34e816ebb8deb4b68e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -970,6 +970,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Male/Movement/Run/HumanM@Run01_ForwardRight.fbx
-  uploadId: 757981
+  uploadId: 762275

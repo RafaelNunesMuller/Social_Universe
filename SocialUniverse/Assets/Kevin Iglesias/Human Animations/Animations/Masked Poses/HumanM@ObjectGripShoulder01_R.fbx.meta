@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e1e4c5d3c3ae2dd4fafd38e739d5789a
+guid: 5da90ac229036a74798d1b6af61b871f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -970,6 +970,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Masked Poses/HumanM@ObjectGripShoulder01_R.fbx
-  uploadId: 757981
+  uploadId: 762275
