@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05a031811c767a14bba1d5a24332c36e
+guid: 2faa610713d3b3c439473daa55e8c60a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -111,6 +111,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Models/HumanM_Model.fbx
-  uploadId: 757981
+  uploadId: 762275

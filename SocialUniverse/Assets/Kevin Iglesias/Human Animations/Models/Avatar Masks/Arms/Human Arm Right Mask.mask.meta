@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 178680e2931eb464dba5da15a157037a
+guid: a1efc4df860a2fe4a8c3e44b28fd963e
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 31900000
@@ -10,7 +10,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Models/Avatar Masks/Arms/Human
     Arm Right Mask.mask
-  uploadId: 757981
+  uploadId: 762275

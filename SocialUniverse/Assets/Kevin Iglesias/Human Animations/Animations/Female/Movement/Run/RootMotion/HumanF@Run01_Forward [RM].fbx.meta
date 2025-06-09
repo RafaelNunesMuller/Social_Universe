@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 89d23573419249a49910a787f49c6c3b
+guid: b5aa46a35563ed44bb6dc4be5dabd918
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -48,7 +48,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -949,7 +949,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Rig/B-root
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -970,7 +970,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Female/Movement/Run/RootMotion/HumanF@Run01_Forward
     [RM].fbx
-  uploadId: 757981
+  uploadId: 762275

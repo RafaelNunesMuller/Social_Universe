@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b1444fdef206ca4988365225a8d398a
+guid: d9cb89b0bc352ec4a8a17c56c39dbefb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -111,7 +111,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Melee
     Animations/Models/Human_Sword.fbx
-  uploadId: 757981
+  uploadId: 762275

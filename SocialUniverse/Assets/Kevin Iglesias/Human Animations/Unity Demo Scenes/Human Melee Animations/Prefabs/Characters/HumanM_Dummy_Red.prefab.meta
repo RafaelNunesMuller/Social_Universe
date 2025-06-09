@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b77ec62671f64204bbb7beb5dc3a3ee6
+guid: b4deeecceffb78942b88322de05e1f7b
 PrefabImporter:
   externalObjects: {}
   userData: 
@@ -9,7 +9,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Melee
     Animations/Prefabs/Characters/HumanM_Dummy_Red.prefab
-  uploadId: 757981
+  uploadId: 762275

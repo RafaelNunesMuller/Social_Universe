@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46a652a207544bf4b87e4eabdfd97b24
+guid: a774989d24c2ed24ba4475823067ad82
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -111,7 +111,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Melee
     Animations/Models/Human_Greatsword.fbx
-  uploadId: 757981
+  uploadId: 762275
