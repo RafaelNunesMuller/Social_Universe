@@ -33,16 +33,5 @@ public class DealDamage : MonoBehaviour
     }
 
 
-    public void EnableWeaponCollider()
-    {
-
-        if (weaponCollider != null)
-            weaponCollider.enabled = true;
-    }
-
-    public void DisableWeaponCollider()
-    {
-        if (weaponCollider != null)
-            weaponCollider.enabled = false;
-    }
+    
 }

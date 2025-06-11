@@ -80,11 +80,14 @@ public class Player_Move : MonoBehaviour
                 verticalVelocity = jumpForce;
                 anim.SetTrigger("jump");
             }
-        }
 
+            Vector3 verticalMove = Vector3.up * verticalVelocity;
+            controller.Move(verticalMove * Time.deltaTime);
+
+        }
+        
         // Aplica o movimento vertical
-        Vector3 verticalMove = Vector3.up * verticalVelocity;
-        controller.Move(verticalMove * Time.deltaTime);
+        
         
 
 
