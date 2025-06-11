@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c39f5c20227ac754ea6efe8965b5fbb9
+guid: 4340f4c2a8d13cf4b82d9438b74c6a67
 PrefabImporter:
   externalObjects: {}
   userData: 
@@ -9,7 +9,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Melee
     Animations/Prefabs/Weapons/Human_Sword.prefab
-  uploadId: 757981
+  uploadId: 762275

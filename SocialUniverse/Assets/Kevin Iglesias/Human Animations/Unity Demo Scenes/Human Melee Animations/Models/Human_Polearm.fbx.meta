@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bcbde763cf9170479d7b6cb1d0dbe49
+guid: 67dca66dcdf72574e89f49787f79655f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -111,7 +111,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Melee
     Animations/Models/Human_Polearm.fbx
-  uploadId: 757981
+  uploadId: 762275

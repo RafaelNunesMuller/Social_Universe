@@ -1935,8 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7756b007b29e04a8b83f05721c3c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  anim: {fileID: 0}
+  damage: 45
   weaponCollider: {fileID: 1956878617}
 --- !u!65 &1956878617
 BoxCollider:

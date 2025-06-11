@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c8048ee27049164e8fe2400cec1efaa
+guid: b7a9bc6acd2eaa941ab64d230864a316
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 31900000
@@ -10,7 +10,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Models/Avatar Masks/Hands/Human
     Hand Left Mask.mask
-  uploadId: 757981
+  uploadId: 762275

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 370b6008e4283fc4e883d28acc63db46
+guid: 51bdc1cd12e2d1a489d0eefb275b3cb6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -970,6 +970,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 165785
   packageName: Human Melee Animations FREE
-  packageVersion: 2.0.1
+  packageVersion: 2.0.2
   assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Male/Movement/Strafe/StrafeRun/HumanM@StrafeRun01_BackwardLeft.fbx
-  uploadId: 757981
+  uploadId: 762275
