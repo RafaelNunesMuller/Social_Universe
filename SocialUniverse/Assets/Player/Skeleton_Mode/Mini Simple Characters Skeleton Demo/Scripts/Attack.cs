@@ -2,37 +2,16 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private Animator anim;
-    public Collider weaponCollider;
+    public GameObject sword_wood;
+    public BoxCollider boxCollider; 
 
-    
-    void Start()
+    public void EnableDamage()
     {
-        weaponCollider = GetComponent<Collider>();
-
-        weaponCollider.enabled = false;
+        boxCollider.enabled = true; // Ativa o BoxCollider para permitir dano
     }
 
-    void Update()
+    public void DisableDamage()
     {
-        if (Input.GetButtonDown("Fire1") )
-        {
-            anim.SetBool("isAttacking", true);
-        }
-    }
-
-
-    public void EnableWeaponCollider()
-    {
-
-        if (weaponCollider != null)
-            weaponCollider.enabled = true;
-    }
-
-    public void DisableWeaponCollider()
-    {
-        if (weaponCollider != null)
-            weaponCollider.enabled = false;
+        boxCollider.enabled = false; // Desativa o BoxCollider para não permitir dano
     }
 }

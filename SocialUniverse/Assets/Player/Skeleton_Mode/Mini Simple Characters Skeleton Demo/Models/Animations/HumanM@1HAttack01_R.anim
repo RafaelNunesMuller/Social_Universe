@@ -119350,14 +119350,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.42471907
-    functionName: EnableWeaponCollider
+    functionName: EnableDamage
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 9b65defabb919bd4bab14ad5a4784c1c, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.7
-    functionName: DisableWeaponCollider
+    functionName: DisableDamage
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 9b65defabb919bd4bab14ad5a4784c1c, type: 3}
     floatParameter: 0
