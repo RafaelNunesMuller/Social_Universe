@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Importe para carregar cenas
 
 public class DOOR : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class DOOR : MonoBehaviour
                 {
                     isOpening = true;
                     playerMove.UseKey();
+                    SceneManager.LoadScene("ThanksForPlaying"); // Carrega a cena do jogo
                     Debug.Log("Porta aberta com chave!");
                 }
                 else
